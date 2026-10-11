@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Law Firm Website Template" name="keywords">
+        <meta content="Law Firm Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{%static 'lib/animate/animate.min.css'%}" rel="stylesheet">
+        <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{%static 'css/style.css'%}" rel="stylesheet">
+        <style>
+        #canvas {
+            display: none;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Top Bar Start -->
+            <div class="top-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="logo" style="width:1000px;">
+                                <a href="index.html">
+                                    <h1>SMART VOTING SYSTEM</h1>
+                                    <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Top Bar End -->
+
+            <!-- Nav Bar Start -->
+            <div class="nav-bar">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                        <a href="#" class="navbar-brand">MENU</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                              <div class="navbar-nav mr-auto">
+                                <a href="/vhome" class="nav-item nav-link ">Home</a>
+                                <a href="/CastVote" class="nav-item nav-link active">Cast Your Vote</a>
+                                   <a href="/ViewVote" class="nav-item nav-link">Your Vote</a>
+                            </div>
+                            <div class="ml-auto">
+                                <a class="btn" href="/userlogin">Logout</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Nav Bar End -->
+
+
+
+
+
+            <!-- About Start -->
+            <div class="about">
+                <div class="container">
+                    <div class="row align-items-center">
+
+                        <div class="col-lg-7 col-md-6">
+                            <div class="section-header">
+                                <h2>VERIFY YOU FACE</h2>
+                                <font color="red">{{msg}}</font>
+                            </div>
+                            <div class="about-text">
+
+            <!-- Contact Start -->
+            <div class="contact">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="contact-form">
+                                <form action="/ValidateAction" id="loginForm" method="post" enctype="multipart/form-data">
+                                    {%csrf_token%}
+                                     <div>
+                                    <video id="video" width="640" height="480" autoplay></video>
+                                    <button class="btn" type="button" onclick="captureImage()">Capture Photo</button>
+                                </div>
+                                <canvas id="canvas" width="640" height="480"></canvas>
+
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact End -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About End -->
+
+
+
+<script>
+        // Setup video stream
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+
+        // Start the webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                video.srcObject = stream;
+            })
+            .catch((err) => {
+                alert('Error accessing webcam: ' + err);
+            });
+
+        // Capture image from webcam
+        function captureImage() {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            // Convert canvas to image data and send it as base64
+            const imageData = canvas.toDataURL('image/jpeg');
+            const formData = new FormData();
+            formData.append('image', imageData);
+
+
+            // Submit the captured image and fingerprint data
+            fetch('/CastVoteAction', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Face Validated successfully');
+                    window.location.href = '/ViewCandidateList';  // Redirect on successful login
+                } else {
+                    alert('Face not recognized');
+                }
+            })
+            .catch(err => {
+                console.error('Error:', err);
+                alert('Error during login');
+            });
+        }
+    </script>
+
+
+
+
+
+
+
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{%static 'lib/easing/easing.min.js'%}"></script>
+        <script src="{%static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+        <script src="{%static 'lib/isotope/isotope.pkgd.min.js'%}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{%static 'js/main.js'%}"></script>
+    </body>
+</html>

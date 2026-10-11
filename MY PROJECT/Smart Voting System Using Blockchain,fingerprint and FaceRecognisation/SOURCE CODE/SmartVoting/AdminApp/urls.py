@@ -1,0 +1,25 @@
+from django.urls import path
+from AdminApp import views
+urlpatterns = [
+    path('', views.index),
+    path('login', views.login),
+    path('LogAction', views.LogAction),
+    path('ahome', views.ahome),
+    path('AddPartyDetails', views.AddPartyDetails),
+    path('AddPartyAction', views.AddPartyAction),
+    path('AddCandidateDetails',views.AddCandidateDetails),
+    path('AddCandidateAction', views.AddCandidateAction),
+    path('ViewPartyDetails', views.ViewPartyDetails),
+    path('ViewVotes', views.ViewVotes),
+    path('ViewVotesCount', views.ViewVotesCount),
+    path('userlogin', views.ulogin),
+    path('register', views.register),
+    path('RegAction', views.RegAction),
+    path('UserLogAction',views.UserLogAction),
+    path('vhome', views.vhome),
+    path('CastVote',views.CastVote),
+    path('CastVoteAction', views.CastVoteAction),
+    path('ViewCandidateList', views.ViewCandidateList),
+    path('RegsterVoter', views.RegsterVoter),
+    path('ViewVote', views.ViewVote),
+]

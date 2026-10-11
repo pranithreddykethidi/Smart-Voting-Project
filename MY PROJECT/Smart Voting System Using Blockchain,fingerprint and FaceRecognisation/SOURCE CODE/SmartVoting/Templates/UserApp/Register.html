@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Law Firm Website Template" name="keywords">
+        <meta content="Law Firm Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600;1,700;1,800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="{%static 'lib/animate/animate.min.css'%}" rel="stylesheet">
+        <link href="{%static 'lib/owlcarousel/assets/owl.carousel.min.css'%}" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{%static 'css/style.css'%}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Top Bar Start -->
+            <div class="top-bar">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="logo" style="width:1000px;">
+                                <a href="index.html">
+                                    <h1>SMART VOTING SYSTEM</h1>
+                                    <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Top Bar End -->
+
+            <!-- Nav Bar Start -->
+            <div class="nav-bar">
+                <div class="container-fluid">
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+                        <a href="#" class="navbar-brand">MENU</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto">
+                                <a href="/" class="nav-item nav-link ">Home</a>
+                                <a href="/login" class="nav-item nav-link">Admin</a>
+                                <a href="/userlogin" class="nav-item nav-link active">Voter</a>
+
+
+
+                            </div>
+                            <div class="ml-auto">
+                                <a class="btn" href="/login">Get Voter Login</a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- Nav Bar End -->
+
+
+            <!-- Carousel Start -->
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel" data-slide-to="1"></li>
+                    <li data-target="#carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{%static 'voting.jpeg'%}" alt="Carousel Image">
+                        <div class="carousel-caption">
+                            <h1 class="animated fadeInLeft">Smart Voting System</h1>
+                            <p class="animated fadeInRight">User Blockchain Technology</p>
+                            <a class="btn animated fadeInUp" href="/voter/login">Get for voting</a>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- Carousel End -->
+
+
+            <!-- Top Feature Start-->
+            <div class="feature-top">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-item">
+                                <i class="far fa-check-circle"></i>
+                                <h3>Voter Registration</h3>
+                                <p>Govt Approved</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-item">
+                                <i class="fa fa-user-tie"></i>
+                                <h3>Election Campaigning</h3>
+                                <p>Expert Attorneys</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-item">
+                                <i class="far fa-thumbs-up"></i>
+                                <h3>Voting</h3>
+                                <p>99.99% Case Won</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="feature-item">
+                                <i class="far fa-handshake"></i>
+                                <h3>Counting</h3>
+                                <p>Quick Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Top Feature End-->
+
+
+            <!-- About Start -->
+            <div class="about">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="about-img">
+                                <img src="{%static 'voting.avif'%}" alt="Image">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="section-header">
+                                <h2>Voter Registration</h2>
+                                <font color="red">{{msg}}</font><br>
+                                <font color="red">{{bno}}</font><br>
+                                <font color="red">{{ph}}</font><br>
+                                <font color="red">{{ch}}</font>
+                            </div>
+                            <div class="about-text">
+
+            <!-- Contact Start -->
+            <div class="contact">
+                <div class="container">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="contact-form">
+
+                                <form action="/RegAction" method="post" enctype="multipart/form-data">
+                                    {%csrf_token%}
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="uname" placeholder="User Name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Email Name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password" placeholder="Your Password" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="const" placeholder="Your Constituency" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Choose FingerPrint</label>
+                                        <input type="file" class="form-control" name="finger" required="required" />
+                                    </div>
+                                     <div class="form-group">
+                                         <label>Profile Pic</label>
+                                        <input type="file" class="form-control" name="profile" required="required" />
+                                    </div>
+
+                                    <div>
+                                        <button class="btn" type="submit">register Now</button>
+
+                                    </div>
+                                    Alread Have An Account? <a href="/userlogin">Login</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact End -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- About End -->
+
+
+
+
+
+
+
+
+
+            <!-- Footer Start -->
+            <div class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="footer-about">
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-8">
+                            <div class="row">
+                        <div class="col-md-6 col-lg-4">
+
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="container footer-menu">
+
+                </div>
+                <div class="container copyright">
+                    <div class="row">
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+
+            <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="{%static 'lib/easing/easing.min.js'%}"></script>
+        <script src="{%static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+        <script src="{%static 'lib/isotope/isotope.pkgd.min.js'%}"></script>
+
+        <!-- Template Javascript -->
+        <script src="{%static 'js/main.js'%}"></script>
+    </body>
+</html>
